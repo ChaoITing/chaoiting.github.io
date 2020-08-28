@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Community Resource Index</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Home</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="Certificate.html">Certificate</a></li>
+							<!-- <li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Community Resource Index</h1>
+							<span class="image main"><img src="images/CPAL.png" alt="" /></span>
+							<p>Objectives: Identify the census tracts with the most in need of resources based on educational data</br>
+							   Scope: 4 major counties in DFW area (Dallas, Collin, Denton, and Tarrant)
+							</p>
+							<p>
+								<a href="https://public.tableau.com/profile/i.ting.chao#!/vizhome/CRI-Map/IndexMap">Click here to see the index on map</a>
+							</p>
+							<p>
+								“Morally and economically, allowing so many of our children to grow up so far from opportunity threatens our future.
+								If we are willing to embrace the challenge of working collectively and strategically, Dallas can cut childhood poverty in half within a single generation.”
+								—Mayor Mike Rawlings </br>
+								Child poverty is a serious problem, children living in poverty are more likely to experience repeated trauma than other peers, then these traumas are likely to lead to lower opportunity.
+								This cycle is hard to break if we don’t get the resources to the right families.
+								The goal of this project is to build an index to improve resource allocation, and prioritize and deploy the funding to the right agencies or schools.</br>
+								The index is comprised of five categories, community, economics, education, health, and family. In this project, we focused on education.
+							</p>
+							<p>
+								In education sub-index, we decide to use 11 features and 4 target variables as our indicators, where features include early education enrollment, school poverty, student-teacher ratio,
+								free lunch, reduced lunch, title I school, high-quality ECE centers, math proficiency, reading proficiency, high school graduation rate, second education, and target variables are household income,
+								mental health, physical health, and poverty probability index.
+							</p>
+							<p>
+								First, we apply KNN imputer to handle missing values. Instead of inserting missing values all at once, we split the data by county, then imputed the missing values separately,
+								because we were told by the nonprofit organizations we cooperated with that the situation for each county was very different. Then we scaled data (MinMaxScaler) for all variables to ensure they are comparable.
+								On more thing, we reversed three target variables (mental health, physical health, and poverty probability index) by multiplying with -1 to ensure the higher score means the better in the target variables.</br>
+								After completing data preprocessing, we decided to use simple linear regression model to avoid the multicollinearity problem between independent variables, we obtained coefficients by regressing each target variable with independent variables.
+							</p>
+							<p>
+								The following table shows the results and weights for each features:
+								<table border="1">
+									<tr>
+        								<th>Features</th>
+        								<th>Household Income</th>
+										<th>Mental Health - Reversed</th>
+										<th>Physical Health - Reversed</th>
+										<th>Poverty Probability Index - Reversed</th>
+										<th>Average</th>
+										<th>Average-Scaled</th>
+										<th>Wj</th>
+										<th>Weights</th>
+    								</tr>
+									<tr>
+        								<td>Early Education Enrollment</td>
+        								<td>0.17</td>
+										<td>0.27</td>
+										<td>0.25</td>
+										<td>0.14</td>
+										<td>0.21</td>
+										<td>6.44</td>
+										<td>3.72</td>
+										<td>0.34</td>
+    								</tr>
+									<tr>
+        								<td>School Poverty</td>
+        								<td>0.26</td>
+										<td>0.39</td>
+										<td>0.35</td>
+										<td>0.23</td>
+										<td>0.31</td>
+										<td>9.59</td>
+										<td>5.29</td>
+										<td>0.48</td>
+    								</tr>
+									<tr>
+        								<td>Student-Teacher Ratio</td>
+        								<td>-0.12</td>
+										<td>-0.35</td>
+										<td>-0.32</td>
+										<td>-0.15</td>
+										<td>-0.23</td>
+										<td>-7.26</td>
+										<td>-3.13</td>
+										<td>-0.29</td>
+    								</tr>
+									<tr>
+        								<td>Free Lunch</td>
+        								<td>-0.27</td>
+										<td>-0.41</td>
+										<td>-0.44</td>
+										<td>-0.29</td>
+										<td>-0.35</td>
+										<td>-10.94</td>
+										<td>-4.97</td>
+										<td>-0.45</td>
+    								</tr>
+									<tr>
+        								<td>Reduced Lunch</td>
+        								<td>-0.11</td>
+										<td>-0.07</td>
+										<td>-0.02</td>
+										<td>0.05</td>
+										<td>-0.04</td>
+										<td>-1.20</td>
+										<td>-0.10</td>
+										<td>-0.01</td>
+    								</tr>
+									<tr>
+        								<td>Title I School</td>
+										<td>-0.16</td>
+										<td>-0.21</td>
+										<td>-0.22</td>
+										<td>-0.15</td>
+										<td>-0.19</td>
+										<td>-5.74</td>
+										<td>-2.37</td>
+										<td>-0.22</td>
+    								</tr>
+									<tr>
+        								<td>High-Quality ECE Centers</td>
+										<td>0.07</td>
+										<td>-0.19</td>
+										<td>-0.08</td>
+										<td>-0.40</td>
+										<td>-0.15</td>
+										<td>-4.71</td>
+										<td>-1.86</td>
+										<td>-0.17</td>
+    								</tr>
+									<tr>
+        								<td>Math Proficiency</td>
+        								<td>0.37</td>
+										<td>0.51</td>
+										<td>0.51</td>
+										<td>0.29</td>
+										<td>0.42</td>
+										<td>13.09</td>
+										<td>7.05</td>
+										<td>0.64</td>
+    								</tr>
+									<tr>
+        								<td>Reading Proficiency</td>
+        								<td>0.37</td>
+										<td>0.53</td>
+										<td>0.54</td>
+										<td>0.33</td>
+										<td>0.44</td>
+										<td>13.76</td>
+										<td>7.38</td>
+										<td>0.67</td>
+    								</tr>
+									<tr>
+        								<td>High School Graduation Rate</td>
+        								<td>-0.45</td>
+										<td>-0.74</td>
+										<td>-0.73</td>
+										<td>-0.41</td>
+										<td>-0.58</td>
+										<td>-18.01</td>
+										<td>-8.51</td>
+										<td>-0.77</td>
+    								</tr>
+									<tr>
+        								<td>Second Education Rate</td>
+        								<td>0.39</td>
+										<td>0.66</td>
+										<td>0.62</td>
+										<td>0.39</td>
+										<td>0.52</td>
+										<td>15.99</td>
+										<td>8.49</td>
+										<td>0.77</td>
+    								</tr>
+								</table>
+								<li>Steps for calculating the weights for each features:</br>
+								1. Calculate the average of correlation coefficients (rj)</br>
+								2. Rescale average correlation coefficients so that they sum up to the number of indicators:</br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rj= rj*D/S</br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Where:</br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D is the number of sub-indicators (11) </br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S is the sum of the average correlation coefficients (rj)</br>
+								3. Standardize Rescaled average correlation coefficients (Rj): constant unity-weights</br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wj= (Rj+1)/2</br>
+								4. Final weights: we rescaled the weights so that they sum up to one</br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wj/sum(Wj)</li>
+							</p>
+							<p>
+								Finally, we sum up values as an index for all features after applying weights to each variable for every census tract.
+								Then, rescaled the index to the range from 0 to 100. A lower score means the census tract is having a not so good situation with child poverty.
+							</p>
+							<p>
+								<a href="https://github.com/ChaoITing/CRI-education">(Please find Python code here.)</a>
+							</p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="mailto:ericachaoit@gmail.com">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/i-ting-chao/" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/ChaoITing" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:ericachaoit@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li></br>
+									<!-- <li><a class="icon solid style2 fa-phone"><span class="label">Phone</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(469)403-4280</li> -->
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Erica (I-Ting) Chao. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Real Estate Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Home</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="Certificate.html">Certificate</a></li>
+							<!-- <li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Real Estate Analysis</h1>
+							<span class="image main"><img src="images/Real Estate Analysis.jpg" alt="" /></span>
+							<p>Objectives: Whether a residential property management company convert its long-term rental properties to short-term rental properties?</p>
+							<p>Recommendations:
+								<li>Enter the short-term rental market</li>
+								<li>Convert 13 to 20 properties first</li>
+								<li>Focus on houses in FL, TX, and CA</li>
+							</p>
+							<p>
+								The analysis that serves as the basis of my recommendation indicates that Watershed and its client would benefit from $0.88M of increased profits during the first year, and yearly profits of $0.79M every year thereafter if my recommendation is enacted.
+								The initial capital investment needed to implement my recommendation would be $0.48M.
+								This analysis is based on the $0.5M limitation of cash on hand and original financial assumptions listed below.
+								<table border="1">
+									<tr>
+        								<th>Consideration</th>
+        								<th>Assumed Value</th>
+										<th>Minimum Value Tested</th>
+										<th>Maximum Value Tested</th>
+										<th>Rationale for Range of Values Tested</th>
+    								</tr>
+									<tr>
+        								<td>Additional profit needed for a property to be considered “more profitable as a short-term rental”</td>
+        								<td>$6,000</td>
+										<td>$4,800</td>
+										<td>$7,200</td>
+										<td>+/-20% of assumed value</td>
+    								</tr>
+									<tr>
+        								<td>Cost to convert property to short-term rental (includes furnishing and decorating)</td>
+        								<td>$30,000</td>
+										<td>$24,000</td>
+										<td>$36,000</td>
+										<td>+/-20% of assumed value</td>
+    								</tr>
+									<tr>
+        								<td>Years to depreciate capital expenditures</td>
+        								<td>5</td>
+										<td>4</td>
+										<td>6</td>
+										<td>+/-20% of assumed value</td>
+    								</tr>
+									<tr>
+        								<td>Yearly upkeep</td>
+        								<td>$6,000</td>
+										<td>$4,800</td>
+										<td>$7,200</td>
+										<td>+/-20% of assumed value</td>
+    								</tr>
+									<tr>
+        								<td>Service fees to short-term stay website (e.g. Airbnb)</td>
+        								<td>20%</td>
+										<td>3%</td>
+										<td>15%</td>
+										<td>Based on research, service fees across 3rd-party websites is from 3% per booking to 15% per booking.</td>
+    								</tr>
+									<tr>
+        								<td>Regulatory fees (taxes and potential legal fees)</td>
+        								<td>10%</td>
+										<td>5%</td>
+										<td>20%</td>
+										<td>Based on research, taxes for each state are from 0% to 15%, plus some license fees and violation fees. So regulatory fees are approximately estimated from 5% to 20%.</td>
+    								</tr>
+									<tr>
+        								<td>Hospitality charges (key service, cleaning, re-stocking)</td>
+        								<td>$100</td>
+										<td>$50</td>
+										<td>$150</td>
+										<td>Based on research, cleaning fees range from $50 to $150.</td>
+    								</tr>
+									<tr>
+        								<td>Typical stay duration (days)</td>
+        								<td>3</td>
+										<td>3</td>
+										<td>7</td>
+										<td>Based on research, most host typically set their minimum stay at 3 days, and people usually stay 6.4 days in average.</td>
+    								</tr>
+									<tr>
+        								<td>Monthly utilities per property</td>
+        								<td>$300</td>
+										<td>$300</td>
+										<td>$500</td>
+										<td>Based on research, average monthly utilities is from 300 to 500.</td>
+    								</tr>
+								</table>
+							</p>
+							<p>
+								I have created a <a href="https://public.tableau.com/profile/i.ting.chao#!/vizhome/RealEstateManagement_15968469438390/Story1">dashboard</a> that illustrates the effects of changing these assumptions on predicted profits and required capital investment.
+								If all the properties that are “more profitable” as a short-term rental are converted without financial limitations,
+								the minimum additional profits the company could earn when the assumptions were modified within the ranges described above was $0.54M;
+								the maximum additional profits Watershed could earn when the assumptions were modified within the ranges described above was $4.7M.
+								Overall, the parameter that affected profits most was service fees plus regulatory fees.
+							</p>
+							<p>
+								Predictive Modeling Details</br>
+								I was provided with 4 types of information about short-term rentals of the same type (number of bedrooms, apartment or house, kitchen availability, unshared property) and in the same location as the company's client’s 244 properties:
+								a typical short-term nightly rental rate, the corresponding occupancy rate for the property with that rental rate, the 10th percentile nightly rental rate, and the 90th percentile nightly rental rate.
+								When the typical rental prices were expressed in terms of percentiles relative to properties of the same type and in the same location, but not when they were analyzed as raw dollar values. </br>
+								I used the linear regression line and optimization function in Python to find the rental price and occupancy rate that would maximize the profits expected from each of the company's client’s 244 properties.
+								Any optimized price below the 10th percentile rate was replaced with the 10th percentile rate, and any optimized price above the 90th percentile rate was replaced with the 90th percentile rate,
+								in order to account for lack of data outside of these ranges in the linear model.
+								These optimized rental rates were entered into a financial cash flow and profit model that computed the expected revenue from each property based on its projected occupancy rate,
+								and the expected costs according to the financial assumptions described above.
+							</p>
+							<p><a href="https://github.com/ChaoITing/Real-Estate-Analysis">(Please find Python code here.)</a></p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="mailto:ericachaoit@gmail.com">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/i-ting-chao/" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/ChaoITing" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:ericachaoit@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li></br>
+									<!-- <li><a class="icon solid style2 fa-phone"><span class="label">Phone</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(469)403-4280</li> -->
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Erica (I-Ting) Chao. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
